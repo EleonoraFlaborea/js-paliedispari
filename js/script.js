@@ -30,7 +30,16 @@ Buon lavoro e buon divertimento!
 // ? Creare una funzione per capire se la parola inserita è palindroma
 // ? Stampiamo il risultato in console
 
+//1 recupero elementi dalla pagina
+const form = document. getElementById('form')
+const input = document. getElementById('input')
 
+//2 recupera con il click la parola
+form.addEventListener('submit', function(e){
+})
+
+//3 funzione per capire se la parola è palindroma
+//4 stampa in pagina
 
 
 
