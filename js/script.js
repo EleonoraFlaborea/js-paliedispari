@@ -31,17 +31,72 @@ Buon lavoro e buon divertimento!
 // ? Stampiamo il risultato in console
 
 //1 recupero elementi dalla pagina
-const form = document. getElementById('form')
-const input = document. getElementById('input')
+const button = document. getElementById('button')
+const wordField = document. getElementById('input')
+
 
 //2 recupera con il click la parola
-form.addEventListener('submit', function(e){
+button.addEventListener('click', function(){
+    const wordValue = wordField.value.trim();
+    console.log(wordValue);
 })
+   
+//3 funzione per invertire parola
 
-//3 funzione per capire se la parola è palindroma
+
+
+function reverseText(text){
+    let reversedText = '';
+
+    for (let i = text.lenght -1; i >= 0; i--){
+        reversedText += text [i];
+        console.log(text[i])
+    }
+
+    
+
+    return reversedText;
+}
+
+
+const result = reverseText('ciao')
+console.log(result)
+//invertire parola ricevuta
+
+//4 funzione per capire se la parola è palindroma
+function isPalindrome (){
+   
+
+    //se la parola ricevuta è uguale a quella rovesciata
+
+    //allora è palindroma, sennò non lo è
+}
+
+
+
 //4 stampa in pagina
 
-
+/*
+let wordValue = '';
+//2 recupera con il click la parola
+button.addEventListener('click', function (){
+    
+    //recupero elementi dal value
+    let wordValue = wordField.value;
+    console.log(wordValue);
+})
+console.log(wordValue);
+*/
 
 
 //ESERCIZIO: Pari e dispari
+
+/*Pari e Dispari
+L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. (con un prompt)
+Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+Sommiamo i due numeri
+Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+Dichiariamo chi ha vinto in console.*/
+
+
+
