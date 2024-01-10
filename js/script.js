@@ -22,7 +22,7 @@ Se ne avete tempo e voglia, provate a:
 raccogliere le informazioni dall'utente usando form, input, button in pagina invece che coi prompt.
 Stampare i risultati in pagina, invece che in console
 Buon lavoro e buon divertimento! 
-*/
+
 
 //ESERCIZIO: Palindroma
 
@@ -31,63 +31,30 @@ Buon lavoro e buon divertimento!
 // ? Stampiamo il risultato in console
 
 //1 recupero elementi dalla pagina
-const button = document. getElementById('button')
-const wordField = document. getElementById('input')
+const form = document.querySelector('#palindroma form')
+const wordField = document.querySelector('#palindroma input')
+const resultElement = document.querySelector('#palindroma .result')
 
 
 //2 recupera con il click la parola
-button.addEventListener('click', function(){
-    const wordValue = wordField.value.trim();
-    console.log(wordValue);
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const text = inputField.value.trim();
+
+    const message = isPalindrome(text)? `La parola ${text} è palindroma`: `La parola ${text} non è palindroma`
+
+    resultElement.innerText = message;
 })
    
 //3 funzione per invertire parola
 
-
-
-function reverseText(text){
-    let reversedText = '';
-
-    for (let i = text.lenght -1; i >= 0; i--){
-        reversedText += text [i];
-        console.log(text[i])
-    }
-
-    
-
-    return reversedText;
+function isPalindrome(word){
+    word = word.toLowerCase();
+    const reversedWord = word.split('').reverse().join('');
+    return reversedWord === word;
 }
 
-
-const result = reverseText('ciao')
-console.log(result)
-//invertire parola ricevuta
-
-//4 funzione per capire se la parola è palindroma
-function isPalindrome (){
-   
-
-    //se la parola ricevuta è uguale a quella rovesciata
-
-    //allora è palindroma, sennò non lo è
-}
-
-
-
-//4 stampa in pagina
-
-/*
-let wordValue = '';
-//2 recupera con il click la parola
-button.addEventListener('click', function (){
-    
-    //recupero elementi dal value
-    let wordValue = wordField.value;
-    console.log(wordValue);
-})
-console.log(wordValue);
 */
-
 
 //ESERCIZIO: Pari e dispari
 
@@ -98,5 +65,52 @@ Sommiamo i due numeri
 Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto in console.*/
 
+//1 recupero elementi dalla pagina
+const form = document.querySelector('#pariodispari form')
+const inputField = document.querySelector('#pariodispari input')
+const resultElement = document.querySelector('#pariodispari .result')
+const selectField = document.querySelector('#pariodispari select')
+
+form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const userNumber = parseInt(inputField.value)
+    const userChoice = selectField.value;
+
+    //! validazione
+    if(isNaN(userNumber)|| userNumber < 1 || userNumber > 5){
+        alert('Devi scegliere un numero da 1 a 5');
+        return;
+    }
+
+    if(userChoice !== 'odd' && userChoice !== 'even'){
+        alert('Devi scegliere pri o dispari');
+        return;
+    }
+
+    const cpuNumber = getRandomNumber(1,5);
+    console.log(cpuNumber)
 
 
+    const sum = cpuNumber + userNumber;
+    console.log(sum)
+
+
+    const ricghtChoice = isEven(sum) ? 'even' : 'odd';
+
+    const winner = userChoice === ricghtChoice ? 'User' : 'CPU';
+
+    resultElement.innerText = 'The winner is: ' + winner;
+
+   console.log(userNumber, userChoice)
+})
+
+// #FUNZIONI
+
+function getRandomNumber(min, max){
+    const randomNumber = Mathfloor(Math.random() * (max +1 - min))+min;
+    return randomNumber;
+}
+
+function isEven(num){
+    return num % 2 === 0;
+}
